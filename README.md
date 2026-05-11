@@ -6,6 +6,32 @@ This repository also includes a `libb.a` implementation, B's standard library. I
 
 BCause is implemented as a small single-pass compiler in ~2500 lines of pure C99 code. Therefore, it features small compile times with a very low memory footprint.
 
+This fork also contains a set of reading notes and source annotations for people who want to study BCause as a compact compiler/runtime specimen. If your goal is to understand the implementation, start with [`READING_ORDER.md`](READING_ORDER.md).
+
+## Reading the implementation
+
+BCause is small enough to read, but it is still easy to enter from the wrong end. The recommended route is:
+
+1. [`READING_ORDER.md`](READING_ORDER.md) — linear reading order.
+2. [`NOTES.md`](NOTES.md) — high-level learning map.
+3. [`src/README.md`](src/README.md) — source tree overview.
+4. [`src/compiler/README.md`](src/compiler/README.md) — compiler overview.
+5. [`src/libb/README.md`](src/libb/README.md) — runtime overview.
+6. [`docs/README.md`](docs/README.md) — long-form documentation index.
+
+The main deep-dive documents are:
+
+- [`docs/compiler-pipeline.md`](docs/compiler-pipeline.md) — source to executable pipeline.
+- [`docs/diagnostics-and-parser.md`](docs/diagnostics-and-parser.md) — character-level parser and diagnostics.
+- [`docs/data-layout.md`](docs/data-layout.md) — B word, scalar/vector layout, strings, character packing.
+- [`docs/expression-lowering.md`](docs/expression-lowering.md) — lvalue/rvalue and expression code generation.
+- [`docs/statement-lowering.md`](docs/statement-lowering.md) — labels, jumps, and statement lowering.
+- [`docs/abi-and-stack.md`](docs/abi-and-stack.md) — System V AMD64 ABI and stack frame model.
+- [`docs/libb-runtime.md`](docs/libb-runtime.md) — freestanding runtime, `_start`, syscalls, and standard functions.
+- [`docs/known-limitations.md`](docs/known-limitations.md) — current limitations and likely improvement points.
+
+The source itself also contains explanatory comments. They are meant for readers already comfortable with C and Unix, so the comments focus on BCause-specific control flow, layout, ownership, ABI boundaries, and historical B behavior rather than basic C syntax.
+
 ### Current Status
 
 - [x] global variables
